@@ -235,7 +235,7 @@
 
             const date = document.createElement('div');
             date.className = 'card-date';
-            date.innerHTML = `📅 ${newsletter.date}`;
+            date.textContent = `📅 ${newsletter.date}`;
 
             content.appendChild(title);
             content.appendChild(date);
@@ -260,33 +260,14 @@
                     'newsletters/2024-03-newsletter.html'
                 ];
 
-                // Filter out any files that don't exist (for future expansion)
-                const validNewsletters = [];
-                
-                for (const file of newsletters) {
-                    try {
-                        const response = await fetch(file, { method: 'HEAD' });
-                        if (response.ok) {
-                            validNewsletters.push(file);
-                        }
-                    } catch (e) {
-                        console.log(`Skipping ${file}: not found`);
-                    }
-                }
-
-                if (validNewsletters.length === 0) {
-                    gallery.innerHTML = '<div class="no-newsletters">No newsletters found. Check back soon!</div>';
-                    return;
-                }
-
                 // Clear loading message
                 gallery.innerHTML = '';
 
                 // Sort newsletters by filename (newest first)
-                validNewsletters.sort().reverse();
+                newsletters.sort().reverse();
 
                 // Create cards for each newsletter
-                validNewsletters.forEach(file => {
+                newsletters.forEach(file => {
                     const newsletterData = parseNewsletterFilename(file);
                     const card = createNewsletterCard(newsletterData);
                     gallery.appendChild(card);

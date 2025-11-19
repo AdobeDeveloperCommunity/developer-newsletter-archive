@@ -29,7 +29,7 @@ To add a new newsletter to the archive:
 1. Create your newsletter as an HTML file
 2. Save it in the `newsletters/` directory with the naming convention: `YYYY-MM-newsletter.html`
    - Example: `2024-04-newsletter.html`
-3. Add the filename to the `newsletters` array in `index.html` (line ~181)
+3. Add the filename to the `newsletters` array in `index.html` (around line 257)
 4. Commit and push your changes to the `main` branch
 5. GitHub Actions will automatically deploy the updated site
 
